@@ -1,0 +1,10 @@
+C:\Users\Bence\source\repos\ShooterGame\bin\Debug\ShooterGame.exe.config
+C:\Users\Bence\source\repos\ShooterGame\bin\Debug\ShooterGame.exe
+C:\Users\Bence\source\repos\ShooterGame\bin\Debug\ShooterGame.pdb
+C:\Users\Bence\source\repos\ShooterGame\obj\Debug\ShooterGame.csproj.AssemblyReference.cache
+C:\Users\Bence\source\repos\ShooterGame\obj\Debug\ShooterGame.Form1.resources
+C:\Users\Bence\source\repos\ShooterGame\obj\Debug\ShooterGame.Properties.Resources.resources
+C:\Users\Bence\source\repos\ShooterGame\obj\Debug\ShooterGame.csproj.GenerateResource.cache
+C:\Users\Bence\source\repos\ShooterGame\obj\Debug\ShooterGame.csproj.CoreCompileInputs.cache
+C:\Users\Bence\source\repos\ShooterGame\obj\Debug\ShooterGame.exe
+C:\Users\Bence\source\repos\ShooterGame\obj\Debug\ShooterGame.pdb
