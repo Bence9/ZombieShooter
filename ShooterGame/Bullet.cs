@@ -60,7 +60,7 @@ namespace ShooterGame
             }
 
 
-            if (bullet.Left < 30 || bullet.Left > 700 || bullet.Top < 15 || bullet.Top > 580)
+            if (bullet.Left < 10 || bullet.Left > 1300 || bullet.Top < 15 || bullet.Top > 800)
             {
                 bulletTimer.Stop();
                 bulletTimer.Dispose();

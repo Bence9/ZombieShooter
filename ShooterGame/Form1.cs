@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
+using System.Timers;
 
 namespace ShooterGame
 {
@@ -18,8 +20,9 @@ namespace ShooterGame
         int playerHealth = 100;
         int speed = 10;
         int ammo = 10;
+        int kill = 0;
         int score = 0;
-        int zombieSpeed = 3;
+        int zombieSpeed = 4;
         Random randNum = new Random();
 
         List<PictureBox> zombiesList = new List<PictureBox>();
@@ -32,6 +35,7 @@ namespace ShooterGame
 
         private void MainTimerEvent(object sender, EventArgs e)
         {
+            
             if (playerHealth > 1)
             {
                 healthBar.Value = playerHealth;
@@ -43,10 +47,13 @@ namespace ShooterGame
                 player.SendToBack();
                 GameTimer.Stop();
                 lbRestart.Visible = true;
+                
             }
 
             txtAmmo.Text = "Ammo: " + ammo;
-            txtScore.Text = "Kills: " + score;
+            txtScore.Text = "Kills: " + kill;
+            lbScore.Text = "Score: " + score;
+            
 
             if(goLeft == true && player.Left > 0)
             {
@@ -75,6 +82,7 @@ namespace ShooterGame
                         this.Controls.Remove(x);
                         ((PictureBox)x).Dispose();
                         ammo += 5;
+                        score += 5;
                     }
                 }
 
@@ -116,8 +124,8 @@ namespace ShooterGame
                     {
                         if (x.Bounds.IntersectsWith(j.Bounds))
                         {
-                            score++;
-
+                            kill++;
+                            score += 10;
                             this.Controls.Remove(j);
                             ((PictureBox)j).Dispose();
                             this.Controls.Remove(x);
@@ -133,6 +141,7 @@ namespace ShooterGame
 
 
         }
+
 
         private void KeyIsDown(object sender, KeyEventArgs e)
         {
@@ -199,7 +208,7 @@ namespace ShooterGame
                 ammo--;
                 ShootBullet(facing);
 
-                if(ammo < 1)
+                if(ammo == 3 || ammo == 1)
                 {
                     DropAmmo();
                 }
@@ -227,8 +236,8 @@ namespace ShooterGame
             PictureBox zombie = new PictureBox();
             zombie.Tag = "zombie";
             zombie.Image = Properties.Resources.zdown;
-            zombie.Left = randNum.Next(0,1000);
-            zombie.Top = randNum.Next(0,800);
+            zombie.Left = randNum.Next(0,1500);
+            zombie.Top = randNum.Next(0,1000);
             zombie.SizeMode = PictureBoxSizeMode.AutoSize;
             zombie.BackColor = Color.Transparent;
             zombiesList.Add(zombie);
@@ -251,6 +260,8 @@ namespace ShooterGame
             player.BringToFront();
 
         }
+
+        
 
         private void RestartGame()
         {
@@ -278,9 +289,10 @@ namespace ShooterGame
             lbRestart.BringToFront();
 
             playerHealth = 100;
+            kill = 0;
             score = 0;
             ammo = 10;
-
+            
             GameTimer.Start();
 
         }
