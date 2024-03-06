@@ -40,7 +40,9 @@ namespace ShooterGame
             {
                 gameOver = true;
                 player.Image = Properties.Resources.dead;
+                player.SendToBack();
                 GameTimer.Stop();
+                lbRestart.Visible = true;
             }
 
             txtAmmo.Text = "Ammo: " + ammo;
@@ -228,10 +230,10 @@ namespace ShooterGame
             zombie.Left = randNum.Next(0,1000);
             zombie.Top = randNum.Next(0,800);
             zombie.SizeMode = PictureBoxSizeMode.AutoSize;
+            zombie.BackColor = Color.Transparent;
             zombiesList.Add(zombie);
             this.Controls.Add(zombie);
             player.BringToFront();
-
 
         }
 
@@ -272,6 +274,8 @@ namespace ShooterGame
             goRight = false;
 
             gameOver = false;
+            lbRestart.Visible = false;
+            lbRestart.BringToFront();
 
             playerHealth = 100;
             score = 0;

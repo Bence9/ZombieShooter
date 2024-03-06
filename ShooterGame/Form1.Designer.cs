@@ -35,6 +35,7 @@
             this.healthBar = new System.Windows.Forms.ProgressBar();
             this.player = new System.Windows.Forms.PictureBox();
             this.GameTimer = new System.Windows.Forms.Timer(this.components);
+            this.lbRestart = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,6 +74,7 @@
             // 
             // healthBar
             // 
+            this.healthBar.BackColor = System.Drawing.Color.Gray;
             this.healthBar.Location = new System.Drawing.Point(754, 12);
             this.healthBar.Name = "healthBar";
             this.healthBar.Size = new System.Drawing.Size(216, 29);
@@ -81,6 +83,7 @@
             // 
             // player
             // 
+            this.player.BackColor = System.Drawing.Color.Transparent;
             this.player.Image = global::ShooterGame.Properties.Resources.up;
             this.player.Location = new System.Drawing.Point(436, 318);
             this.player.Name = "player";
@@ -95,12 +98,28 @@
             this.GameTimer.Interval = 20;
             this.GameTimer.Tick += new System.EventHandler(this.MainTimerEvent);
             // 
+            // lbRestart
+            // 
+            this.lbRestart.AutoSize = true;
+            this.lbRestart.BackColor = System.Drawing.Color.Transparent;
+            this.lbRestart.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lbRestart.ForeColor = System.Drawing.Color.Transparent;
+            this.lbRestart.Location = new System.Drawing.Point(322, 216);
+            this.lbRestart.Name = "lbRestart";
+            this.lbRestart.Size = new System.Drawing.Size(331, 29);
+            this.lbRestart.TabIndex = 5;
+            this.lbRestart.Text = "Press Enter to restart game";
+            this.lbRestart.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbRestart.UseWaitCursor = true;
+            this.lbRestart.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(982, 753);
+            this.Controls.Add(this.lbRestart);
             this.Controls.Add(this.player);
             this.Controls.Add(this.healthBar);
             this.Controls.Add(this.txtHealth);
@@ -124,6 +143,7 @@
         private System.Windows.Forms.ProgressBar healthBar;
         private System.Windows.Forms.PictureBox player;
         private System.Windows.Forms.Timer GameTimer;
+        private System.Windows.Forms.Label lbRestart;
     }
 }
 
