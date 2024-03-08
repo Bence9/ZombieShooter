@@ -23,6 +23,7 @@ namespace ShooterGame
         int kill = 0;
         int score = 0;
         int zombieSpeed = 4;
+        int actualTime = 1;
         Random randNum = new Random();
 
         List<PictureBox> zombiesList = new List<PictureBox>();
@@ -47,7 +48,7 @@ namespace ShooterGame
                 player.SendToBack();
                 GameTimer.Stop();
                 lbRestart.Visible = true;
-                
+                timer.Stop();
             }
 
             txtAmmo.Text = "Ammo: " + ammo;
@@ -222,6 +223,19 @@ namespace ShooterGame
 
         }
 
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            if (actualTime >= 0)
+            {
+                int min = actualTime / 60;
+                int sec = actualTime % 60;
+                actualTime++;
+
+                lbTime.Text = "Time: " + min.ToString("00") + ":" + sec.ToString("00");
+            }
+
+        }
+
         private void ShootBullet(string direction)
         {
             Bullet shootBullet = new Bullet();
@@ -260,8 +274,8 @@ namespace ShooterGame
             player.BringToFront();
 
         }
-
         
+
 
         private void RestartGame()
         {
@@ -292,7 +306,9 @@ namespace ShooterGame
             kill = 0;
             score = 0;
             ammo = 10;
-            
+            actualTime = 1;
+            timer.Start();
+
             GameTimer.Start();
 
         }

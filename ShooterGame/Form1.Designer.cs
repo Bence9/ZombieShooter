@@ -38,39 +38,40 @@
             this.lbRestart = new System.Windows.Forms.Label();
             this.lbScore = new System.Windows.Forms.Label();
             this.lbTime = new System.Windows.Forms.Label();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
             this.SuspendLayout();
             // 
             // txtAmmo
             // 
             this.txtAmmo.AutoSize = true;
-            this.txtAmmo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.txtAmmo.Font = new System.Drawing.Font("Franklin Gothic Demi", 16.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.txtAmmo.ForeColor = System.Drawing.Color.White;
             this.txtAmmo.Location = new System.Drawing.Point(12, 12);
             this.txtAmmo.Name = "txtAmmo";
-            this.txtAmmo.Size = new System.Drawing.Size(114, 29);
+            this.txtAmmo.Size = new System.Drawing.Size(130, 36);
             this.txtAmmo.TabIndex = 0;
             this.txtAmmo.Text = "Ammo: 0";
             // 
             // txtScore
             // 
             this.txtScore.AutoSize = true;
-            this.txtScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.txtScore.Font = new System.Drawing.Font("Franklin Gothic Demi", 16.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.txtScore.ForeColor = System.Drawing.Color.White;
             this.txtScore.Location = new System.Drawing.Point(312, 12);
             this.txtScore.Name = "txtScore";
-            this.txtScore.Size = new System.Drawing.Size(92, 29);
+            this.txtScore.Size = new System.Drawing.Size(105, 36);
             this.txtScore.TabIndex = 1;
             this.txtScore.Text = "Kills: 0";
             // 
             // txtHealth
             // 
             this.txtHealth.AutoSize = true;
-            this.txtHealth.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.txtHealth.Font = new System.Drawing.Font("Franklin Gothic Demi", 16.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.txtHealth.ForeColor = System.Drawing.Color.White;
-            this.txtHealth.Location = new System.Drawing.Point(1116, 12);
+            this.txtHealth.Location = new System.Drawing.Point(1102, 12);
             this.txtHealth.Name = "txtHealth";
-            this.txtHealth.Size = new System.Drawing.Size(95, 29);
+            this.txtHealth.Size = new System.Drawing.Size(109, 36);
             this.txtHealth.TabIndex = 2;
             this.txtHealth.Text = "Health:";
             // 
@@ -104,11 +105,11 @@
             // 
             this.lbRestart.AutoSize = true;
             this.lbRestart.BackColor = System.Drawing.Color.Transparent;
-            this.lbRestart.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lbRestart.Font = new System.Drawing.Font("Franklin Gothic Demi", 26.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lbRestart.ForeColor = System.Drawing.Color.Transparent;
-            this.lbRestart.Location = new System.Drawing.Point(521, 307);
+            this.lbRestart.Location = new System.Drawing.Point(475, 300);
             this.lbRestart.Name = "lbRestart";
-            this.lbRestart.Size = new System.Drawing.Size(492, 39);
+            this.lbRestart.Size = new System.Drawing.Size(606, 51);
             this.lbRestart.TabIndex = 5;
             this.lbRestart.Text = "Press ENTER to restart game";
             this.lbRestart.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -118,24 +119,30 @@
             // lbScore
             // 
             this.lbScore.AutoSize = true;
-            this.lbScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lbScore.Font = new System.Drawing.Font("Franklin Gothic Demi", 16.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lbScore.ForeColor = System.Drawing.Color.White;
             this.lbScore.Location = new System.Drawing.Point(588, 12);
             this.lbScore.Name = "lbScore";
-            this.lbScore.Size = new System.Drawing.Size(110, 29);
+            this.lbScore.Size = new System.Drawing.Size(123, 36);
             this.lbScore.TabIndex = 6;
             this.lbScore.Text = "Score: 0";
             // 
             // lbTime
             // 
             this.lbTime.AutoSize = true;
-            this.lbTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lbTime.Font = new System.Drawing.Font("Franklin Gothic Demi", 16.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lbTime.ForeColor = System.Drawing.Color.White;
             this.lbTime.Location = new System.Drawing.Point(856, 12);
             this.lbTime.Name = "lbTime";
-            this.lbTime.Size = new System.Drawing.Size(136, 29);
+            this.lbTime.Size = new System.Drawing.Size(170, 36);
             this.lbTime.TabIndex = 7;
-            this.lbTime.Text = "Time: 0:00";
+            this.lbTime.Text = "Time: 00:00";
+            // 
+            // timer
+            // 
+            this.timer.Enabled = true;
+            this.timer.Interval = 1000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // Form1
             // 
@@ -172,6 +179,7 @@
         private System.Windows.Forms.Label lbRestart;
         private System.Windows.Forms.Label lbScore;
         private System.Windows.Forms.Label lbTime;
+        private System.Windows.Forms.Timer timer;
     }
 }
 
