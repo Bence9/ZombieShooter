@@ -26,6 +26,7 @@ namespace ShooterGame
         int actualTime = 1;
         Random randNum = new Random();
 
+        // Lista a játékban szereplő zombikat tartalmazó PictureBox elemek tárolásá
         List<PictureBox> zombiesList = new List<PictureBox>();
 
         public Form1()
@@ -45,17 +46,17 @@ namespace ShooterGame
             {
                 gameOver = true;
                 player.Image = Properties.Resources.dead;
-                player.SendToBack();
+                player.SendToBack(); // A játékos képét hátra küldjük, hogy látható legyen a játék vége üzenet
                 GameTimer.Stop();
                 lbRestart.Visible = true;
-                timer.Stop();
+                timer.Stop(); //időt jelző leállítása
             }
 
             txtAmmo.Text = "Ammo: " + ammo;
             txtScore.Text = "Kills: " + kill;
             lbScore.Text = "Score: " + score;
             
-
+            // játékos mozgásának kezelése
             if(goLeft == true && player.Left > 0)
             {
                 player.Left -= speed;
@@ -76,17 +77,20 @@ namespace ShooterGame
 
             foreach(Control x in this.Controls)
             {
+                // Ha a picturebox az Ammo
                 if(x is PictureBox && (string)x.Tag == "ammo")
                 {
+                    // Ha a játékos érintkezik az ammo-val (x)
                     if (player.Bounds.IntersectsWith(x.Bounds))
                     {
-                        this.Controls.Remove(x);
-                        ((PictureBox)x).Dispose();
+                        this.Controls.Remove(x); // eltávolítjuk a pBoxt
+                        ((PictureBox)x).Dispose(); // felszabadítjuk a pBoxot
                         ammo += 5;
                         score += 5;
                     }
                 }
 
+                // Ha a pBox az zombie
                 if (x is PictureBox && (string)x.Tag == "zombie")
                 {
 
@@ -95,6 +99,7 @@ namespace ShooterGame
                         playerHealth -= 1;
                     }
 
+                    // A zombie követi a játékost
                     if(x.Left > player.Left)
                     {
                         x.Left -= zombieSpeed;
@@ -121,6 +126,7 @@ namespace ShooterGame
 
                 foreach(Control j in this.Controls)
                 {
+                    // Ha a pBox az lövedék , az x pBox meg zombie 
                     if(j is PictureBox && (string)j.Tag == "bullet" && x is PictureBox && (string)x.Tag == "zombie")
                     {
                         if (x.Bounds.IntersectsWith(j.Bounds))
@@ -131,8 +137,8 @@ namespace ShooterGame
                             ((PictureBox)j).Dispose();
                             this.Controls.Remove(x);
                             ((PictureBox)x).Dispose();
-                            zombiesList.Remove(((PictureBox)x));
-                            MakeZombies();
+                            zombiesList.Remove(((PictureBox)x)); //a zombieListből eltávolítjuk a pBoxot
+                            MakeZombies(); //zombie csinálás
                         }
                     }
                 }
@@ -152,6 +158,7 @@ namespace ShooterGame
                 return;
             }
 
+            // irányítás
             if(e.KeyCode == Keys.Left)
             {
                 goLeft = true;
@@ -204,6 +211,7 @@ namespace ShooterGame
                 goDown = false;
             }
 
+            // lövés
             if( e.KeyCode == Keys.Space && ammo > 0 && gameOver == false)
             {
                 ammo--;
@@ -223,6 +231,7 @@ namespace ShooterGame
 
         }
 
+        //idő mérése
         private void timer_Tick(object sender, EventArgs e)
         {
             if (actualTime >= 0)
@@ -242,9 +251,12 @@ namespace ShooterGame
             shootBullet.direction = direction;
             shootBullet.bulletLeft = player.Left + (player.Width /2);
             shootBullet.bulletTop = player.Top + (player.Height /2);
+
+            // Meghívjuk a lövedék létrehozásáért felelős metódust a lövedék objektumon
             shootBullet.MakeBullet(this);
         }
 
+        //Zombie létrehozás
         private void MakeZombies()
         {
             PictureBox zombie = new PictureBox();
@@ -255,18 +267,19 @@ namespace ShooterGame
             zombie.SizeMode = PictureBoxSizeMode.AutoSize;
             zombie.BackColor = Color.Transparent;
             zombiesList.Add(zombie);
-            this.Controls.Add(zombie);
+            this.Controls.Add(zombie); //zombie vezérlő hozzáadása a boxhoz
             player.BringToFront();
 
         }
 
+        //Ammo létrehozás
         private void DropAmmo()
         {
             PictureBox ammo = new PictureBox();
             ammo.Image = Properties.Resources.ammo_Image;
             ammo.SizeMode = PictureBoxSizeMode.AutoSize;
-            ammo.Left = randNum.Next(10, this.ClientSize.Width - ammo.Width);
-            ammo.Top = randNum.Next(50, this.ClientSize.Height - ammo.Height);
+            ammo.Left = randNum.Next(10, this.ClientSize.Width - ammo.Width); //vízszintes pozíció
+            ammo.Top = randNum.Next(50, this.ClientSize.Height - ammo.Height); //függőleges pozíció
             ammo.Tag = "ammo";
             this.Controls.Add(ammo);
 
@@ -306,9 +319,9 @@ namespace ShooterGame
             kill = 0;
             score = 0;
             ammo = 10;
+
             actualTime = 1;
             timer.Start();
-
             GameTimer.Start();
 
         }

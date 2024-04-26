@@ -13,12 +13,12 @@ namespace ShooterGame
     class Bullet
     {
         public string direction;
-        public int bulletLeft;
-        public int bulletTop;
+        public int bulletLeft; // vizszintes
+        public int bulletTop; // függőleges
 
         private int speed = 20;
         private PictureBox bullet = new PictureBox();
-        private Timer bulletTimer = new Timer();
+        private Timer bulletTimer = new Timer(); // időzítő a mozgatáshoz
 
         public void MakeBullet(Form form)
         {
@@ -29,7 +29,7 @@ namespace ShooterGame
             bullet.Top = bulletTop;
             bullet.BringToFront();
 
-            form.Controls.Add(bullet);
+            form.Controls.Add(bullet); //formshoz való hozzáadás
 
             bulletTimer.Interval = speed;
             bulletTimer.Tick += new EventHandler(BulletTimerEvent);
@@ -59,8 +59,8 @@ namespace ShooterGame
                 bullet.Top += speed;
             }
 
-
-            if (bullet.Left < 10 || bullet.Left > 1300 || bullet.Top < 15 || bullet.Top > 800)
+            // Ha a lövedék elérte a határt
+            if (bullet.Left < 10 || bullet.Left > 1500 || bullet.Top < 15 || bullet.Top > 800)
             {
                 bulletTimer.Stop();
                 bulletTimer.Dispose();
