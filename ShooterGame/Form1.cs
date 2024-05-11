@@ -26,7 +26,7 @@ namespace ShooterGame
         int actualTime = 1;
         Random randNum = new Random();
 
-        // Lista a játékban szereplő zombikat tartalmazó PictureBox elemek tárolásá
+        // Lista a játékban szereplő zombikat tartalmazó PictureBoxok tárolására
         List<PictureBox> zombiesList = new List<PictureBox>();
 
         public Form1()
@@ -52,8 +52,8 @@ namespace ShooterGame
                 timer.Stop(); //időt jelző leállítása
             }
 
-            txtAmmo.Text = "Ammo: " + ammo;
-            txtScore.Text = "Kills: " + kill;
+            lbAmmo.Text = "Ammo: " + ammo;
+            lbKills.Text = "Kills: " + kill;
             lbScore.Text = "Score: " + score;
             
             // játékos mozgásának kezelése
@@ -65,7 +65,7 @@ namespace ShooterGame
             {
                 player.Left += speed;
             }
-            if (goUp == true && player.Top > 40)
+            if (goUp == true && player.Top > 60)
             {
                 player.Top -= speed;
             }
@@ -243,6 +243,31 @@ namespace ShooterGame
                 lbTime.Text = "Time: " + min.ToString("00") + ":" + sec.ToString("00");
             }
 
+        }
+
+        private void kékToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.CornflowerBlue;
+        }
+
+        private void zöldToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.BackColor= Color.Olive;
+        }
+
+        private void pirosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.IndianRed;
+        }
+
+        private void sárgaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.Goldenrod;
+        }
+
+        private void greyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.Gray;
         }
 
         private void ShootBullet(string direction)

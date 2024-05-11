@@ -60,7 +60,7 @@ namespace ShooterGame
             }
 
             // Ha a lövedék elérte a határt
-            if (bullet.Left < 10 || bullet.Left > 1500 || bullet.Top < 15 || bullet.Top > 800)
+            if (bullet.Left < 10 || bullet.Left > 1500 || bullet.Top < 50 || bullet.Top > 800)
             {
                 bulletTimer.Stop();
                 bulletTimer.Dispose();
